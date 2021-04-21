@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "taskType": "textInput",
+    "checkType": "manual",
+    "content": {
+      "image": "",
+      "question": "Напишите сочинение"
+    }
+  },
+  {
+    "id": 2,
+    "taskType": "oneAnswer",
+    "checkType": "auto",
+    "content": {
+      "image": "",
+      "question": "Назовите столицу Великобритании",
+      "answers": [ "Москва", "Токио", "Лондон" ]
+    }
+  }
+]
+
+
+/*
+
+ручная проверка - HC
+автопроверка - AC
+
+Вопрос и выбор из нескольких ответов - multipleAnswer  # AC # вторым
+Вопрос и один правильный ответ из всех - oneAnswer  # AC # делаю первым
+Большое текстовое поле и вопрос к нему - textInput  # HC # четвертым если вообще делаю
+Текст в который вставить пропуски - textWithGaps  # AC # третьим
+
+
+Lorem ipsum {dolor} sit {amet; london; paris}
+
+*/
