@@ -18,6 +18,11 @@ def parse_request():
     return str(data)
 
 
+@app.route('/hi', methods=['GET', 'POST'])
+def parse_request():
+    return 'Hi angry world! '
+
+
 @app.route('/questtours', methods=['GET', 'POST'])
 def _questtours():
     # data = request.data
