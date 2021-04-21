@@ -19,7 +19,7 @@ def parse_request():
 
 
 @app.route('/hi', methods=['GET', 'POST'])
-def parse_request():
+def _hi():
     return 'Hi angry world! '
 
 
