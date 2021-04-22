@@ -18,7 +18,7 @@ def parse_request():
     print("/////////")
     print(data)
     print(data_json)
-    return data_json
+    return str(data_json)
 
 
 @app.route('/hi', methods=['GET', 'POST'])
@@ -44,6 +44,12 @@ def _create_questtour():
     return json.dumps({"id": data.id})
 
 
+@app.route('/create_questtours', methods=['GET', 'POST'])
+def _create_questtours():
+    data_json = request.json
+    return json.dumps(db._create_tests(data_json))
+
+
 @app.route('/create_test', methods=['GET', 'POST'])
 def _create_test():
     data_json = request.json
@@ -51,6 +57,12 @@ def _create_test():
     data = db.create_test(db_sess, **data_json)
     print("create_test:", data)
     return json.dumps({"id": data.id})
+
+
+@app.route('/create_tests', methods=['GET', 'POST'])
+def _create_tests():
+    data_json = request.json
+    return json.dumps(db._create_tests(data_json))
 
 
 @app.route('/create_vidiotour', methods=['GET', 'POST'])
@@ -62,9 +74,14 @@ def _create_vidiotour():
     return json.dumps({"id": data.id})
 
 
+@app.route('/create_vidiotours', methods=['GET', 'POST'])
+def _create_vidiotours():
+    data_json = request.json
+    return json.dumps(db._create_vidiotours(data_json))
+
+
 @app.route('/vidiotours', methods=['GET', 'POST'])
 def _vidiotours():
-    # data = request.data
     db_sess = db.db_session.create_session()
     data = db.get_vidiotours(db_sess)
     print("vidiotours:", data)
@@ -73,7 +90,7 @@ def _vidiotours():
 
 @app.route('/tests', methods=['GET', 'POST'])
 def _tests():
-    tour_id = request.data["tour_id"]
+    tour_id = request.args["tour_id"]
     db_sess = db.db_session.create_session()
     data = db.get_tests(db_sess, tour_id)
     print("tests", data)
