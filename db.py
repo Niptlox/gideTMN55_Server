@@ -70,6 +70,12 @@ def _create_tests(data_json):
     return {"id": data.id}
 
 
+def _clear_tests():
+    db_sess = db_session.create_session()
+    db_sess.query(Test).delete()
+    db_sess.commit()
+
+
 def _create_questtours(data_json):
     db_sess = db_session.create_session()
     data = []
@@ -77,6 +83,12 @@ def _create_questtours(data_json):
         data.append(create_questtour(db_sess, **d).id)
     print("create_questtours:", data)
     return {"ids": data}
+
+
+def _clear_vidiotours():
+    db_sess = db_session.create_session()
+    db_sess.query(VidioTour).delete()
+    db_sess.commit()
 
 
 def _create_vidiotours(data_json):
@@ -122,6 +134,12 @@ def get_questtours(db_sess):
     return {"data": tours}
 
 
+def _clear_questtours():
+    db_sess = db_session.create_session()
+    db_sess.query(QuestTour).delete()
+    db_sess.commit()
+
+
 def get_vidiotours(db_sess):
     tours = []
     for tour in db_sess.query(VidioTour).all():
@@ -144,16 +162,17 @@ def email_exists(db_sess, email: str) -> bool:
 
 
 def upload_local():
+    _clear_tests()
+    _clear_questtours()
+    _clear_vidiotours()
     with open('json/tests.json', 'r', encoding='cp1251') as f:  # открыли файл с данными
         text = json.load(f)  # загнали все, что получилось в переменную
         print(text)
         _create_tests(text)
-
     with open('json/qtours.json', 'r', encoding='cp1251') as f:  # открыли файл с данными
         text = json.load(f)  # загнали все, что получилось в переменную
         print(text)
         _create_questtours(text)
-
     with open('json/vtours.json', 'r', encoding='utf-8') as f:  # открыли файл с данными
         text = json.load(f)  # загнали все, что получилось в переменную
         print(text)

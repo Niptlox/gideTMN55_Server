@@ -5,10 +5,20 @@ import db
 import json
 
 from flask import request
+from flask import send_from_directory
+from flask import send_file
+
 
 db.main()
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'qwekwqkJDHASIqwop'
+
+
+@app.route('/download/database')
+def download():
+    # return "ppp"
+    return send_file("db/gideTMN55.db", as_attachment=True, attachment_filename="gideTMN55.db", )
+    # return send_from_directory('db/', "gideTMN55.db")
 
 
 @app.route('/', methods=['GET', 'POST'])
