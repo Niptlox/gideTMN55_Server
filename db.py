@@ -182,7 +182,7 @@ def upload_local():
 
 def main():
     db_session.global_init("db/gideTMN55.db")
-    upload_local()
+    # upload_local()
 
 
 if __name__ == '__main__':
