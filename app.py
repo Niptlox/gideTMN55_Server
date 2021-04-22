@@ -31,7 +31,7 @@ def _questtours():
     # data = request.data
     db_sess = db.db_session.create_session()
     data = db.get_questtours(db_sess)
-    print("questtours", data)
+    print("questtours:", data)
     return json.dumps(data)
 
 
@@ -40,7 +40,7 @@ def _create_questtour():
     data_json = request.json
     db_sess = db.db_session.create_session()
     data = db.create_questtour(db_sess, **data_json)
-    print("create_questtour", data)
+    print("create_questtour:", data)
     return json.dumps({"id": data.id})
 
 
@@ -49,7 +49,7 @@ def _create_test():
     data_json = request.json
     db_sess = db.db_session.create_session()
     data = db.create_test(db_sess, **data_json)
-    print("create_test", data)
+    print("create_test:", data)
     return json.dumps({"id": data.id})
 
 
@@ -58,7 +58,7 @@ def _create_vidiotour():
     data_json = request.json
     db_sess = db.db_session.create_session()
     data = db.create_vidiotour(db_sess, **data_json)
-    print("create_vidiotour", data)
+    print("create_vidiotour:", data)
     return json.dumps({"id": data.id})
 
 
@@ -67,7 +67,7 @@ def _vidiotours():
     # data = request.data
     db_sess = db.db_session.create_session()
     data = db.get_vidiotours(db_sess)
-    print("vidiotours", data)
+    print("vidiotours:", data)
     return json.dumps(data)
 
 
