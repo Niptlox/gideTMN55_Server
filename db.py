@@ -119,7 +119,7 @@ def get_questtours(db_sess):
     tours = []
     for tour in db_sess.query(QuestTour).all():
         tours.append(tour.get_info())
-    return {"data": tours}
+    return tours
 
 
 def get_vidiotours(db_sess):
