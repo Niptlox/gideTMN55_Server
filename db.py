@@ -64,10 +64,11 @@ def create_test(db_sess, **qwargs) -> Test:
 
 def _create_tests(data_json):
     db_sess = db_session.create_session()
+    data = []
     for d in data_json:
-        data = create_test(db_sess, **d)
+        data.append(create_test(db_sess, **d).id)
     print("create_test:", data)
-    return {"id": data.id}
+    return {"ids": data}
 
 
 def _clear_tests():
