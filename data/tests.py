@@ -11,7 +11,7 @@ class Test(SqlAlchemyBase):
     id = sqlalchemy.Column(sqlalchemy.Integer,
                            primary_key=True, autoincrement=True)
     title = sqlalchemy.Column(sqlalchemy.String, nullable=True)
-    task = sqlalchemy.Column(sqlalchemy.Text, nullable=True)
+    task = sqlalchemy.Column(sqlalchemy.JSON, nullable=True)
 
     quest_tour_id = sqlalchemy.Column(sqlalchemy.Integer,
                                       sqlalchemy.ForeignKey("questtours.id"))
