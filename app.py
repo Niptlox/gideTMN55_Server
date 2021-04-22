@@ -14,8 +14,11 @@ app.config['SECRET_KEY'] = 'qwekwqkJDHASIqwop'
 @app.route('/', methods=['GET', 'POST'])
 def parse_request():
     data = request.args
+    data_json = request.json
+    print("/////////")
     print(data)
-    return str(data)
+    print(data_json)
+    return data_json
 
 
 @app.route('/hi', methods=['GET', 'POST'])
@@ -29,6 +32,33 @@ def _questtours():
     db_sess = db.db_session.create_session()
     data = db.get_questtours(db_sess)
     print("questtours", data)
+    return json.dumps(data)
+
+
+@app.route('/create_questtour', methods=['GET', 'POST'])
+def _create_questtour():
+    data_json = request.json
+    db_sess = db.db_session.create_session()
+    data = db.create_questtour(db_sess, **data_json)
+    print("create_questtour", data)
+    return json.dumps(data)
+
+
+@app.route('/create_test', methods=['GET', 'POST'])
+def _create_test():
+    data_json = request.json
+    db_sess = db.db_session.create_session()
+    data = db.create_test(db_sess, **data_json)
+    print("create_test", data)
+    return json.dumps(data)
+
+
+@app.route('/create_vidiotour', methods=['GET', 'POST'])
+def _create_vidiotour():
+    data_json = request.json
+    db_sess = db.db_session.create_session()
+    data = db.create_vidiotour(db_sess, **data_json)
+    print("create_vidiotour", data)
     return json.dumps(data)
 
 

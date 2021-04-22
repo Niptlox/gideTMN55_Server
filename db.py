@@ -3,7 +3,7 @@ from sqlalchemy import exists
 
 from data import db_session
 from data.users import User
-from data.vidiotours import VidioTour
+from data.vidiotours import VidioTour, TYPE_VIDIO2D, TYPE_VIDIO360
 from data.questtours import QuestTour
 from data.tests import Test
 import datetime
@@ -28,6 +28,8 @@ def add_user(db_sess, **qwargs) -> User:
     return User
 
 
+
+
 def create_vidiotour(db_sess, **qwargs) -> VidioTour:
     obj = VidioTour()
 
@@ -35,6 +37,7 @@ def create_vidiotour(db_sess, **qwargs) -> VidioTour:
     obj.description = qwargs.get("description")
     obj.title_image = qwargs.get("title_image")
     obj.resource = qwargs.get("resource")
+    obj.type_vidio = qwargs.get("type_vidio")
 
     db_sess.add(obj)
     db_sess.commit()

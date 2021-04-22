@@ -4,6 +4,8 @@ from sqlalchemy import orm
 
 from .db_session import SqlAlchemyBase
 
+TYPE_VIDIO2D = 2
+TYPE_VIDIO360 = 3
 
 class VidioTour(SqlAlchemyBase):
     __tablename__ = 'vidiotours'
@@ -15,6 +17,7 @@ class VidioTour(SqlAlchemyBase):
     title_image = sqlalchemy.Column(sqlalchemy.String, nullable=True)
 
     resource = sqlalchemy.Column(sqlalchemy.String, nullable=True)
+    type_vidio = sqlalchemy.Column(sqlalchemy.Integer, default=TYPE_VIDIO2D)
 
     created_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                      default=datetime.datetime.now)
