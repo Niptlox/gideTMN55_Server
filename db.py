@@ -119,14 +119,14 @@ def get_questtours(db_sess):
     tours = []
     for tour in db_sess.query(QuestTour).all():
         tours.append(tour.get_info())
-    return tours
+    return {"data": tours}
 
 
 def get_vidiotours(db_sess):
     tours = []
     for tour in db_sess.query(VidioTour).all():
         tours.append(tour.get_info())
-    return tours
+    return {"data": tours}
 
 
 def get_tests(db_sess, tour_id):
@@ -134,7 +134,7 @@ def get_tests(db_sess, tour_id):
     db_tests = db_sess.query(Test).filter(Test.quest_tour_id == tour_id).all()
     for test in db_tests:
         tests.append(test.get_info())
-    return tests
+    return {"data": tests}
 
 
 def email_exists(db_sess, email: str) -> bool:
