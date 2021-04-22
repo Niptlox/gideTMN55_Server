@@ -41,7 +41,7 @@ def _create_questtour():
     db_sess = db.db_session.create_session()
     data = db.create_questtour(db_sess, **data_json)
     print("create_questtour", data)
-    return json.dumps(data)
+    return json.dumps({"id": data.id})
 
 
 @app.route('/create_test', methods=['GET', 'POST'])
@@ -50,7 +50,7 @@ def _create_test():
     db_sess = db.db_session.create_session()
     data = db.create_test(db_sess, **data_json)
     print("create_test", data)
-    return json.dumps(data)
+    return json.dumps({"id": data.id})
 
 
 @app.route('/create_vidiotour', methods=['GET', 'POST'])
@@ -59,7 +59,7 @@ def _create_vidiotour():
     db_sess = db.db_session.create_session()
     data = db.create_vidiotour(db_sess, **data_json)
     print("create_vidiotour", data)
-    return json.dumps(data)
+    return json.dumps({"id": data.id})
 
 
 @app.route('/vidiotours', methods=['GET', 'POST'])

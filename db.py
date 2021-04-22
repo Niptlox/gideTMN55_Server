@@ -1,4 +1,3 @@
-
 from sqlalchemy import exists
 
 from data import db_session
@@ -28,8 +27,6 @@ def add_user(db_sess, **qwargs) -> User:
     return User
 
 
-
-
 def create_vidiotour(db_sess, **qwargs) -> VidioTour:
     obj = VidioTour()
 
@@ -44,16 +41,32 @@ def create_vidiotour(db_sess, **qwargs) -> VidioTour:
     return obj
 
 
+{
+    "title": "title",
+    "description": "description",
+    "title_image": "title_image",
+    "resource": "resource",
+    "type_vidio": "TYPE_VIDIO2D = 2; TYPE_VIDIO360 = 3"
+}
+
+
 def create_test(db_sess, **qwargs) -> Test:
     obj = Test()
 
     obj.title = qwargs.get("title")
     obj.task = qwargs.get("task")
-    obj.quest_tour = qwargs.get("quest_tour")
+    obj.quest_tour_id = qwargs.get("quest_tour_id")
 
     db_sess.add(obj)
     db_sess.commit()
     return obj
+
+
+{
+    "title": "title",
+    "task": "task json",
+    "quest_tour_id": "quest_tour_id"
+}
 
 
 def create_questtour(db_sess, **qwargs) -> QuestTour:
@@ -61,11 +74,19 @@ def create_questtour(db_sess, **qwargs) -> QuestTour:
 
     obj.title = qwargs.get("title")
     obj.description = qwargs.get("description")
+    obj.title_image = qwargs.get("title_image")
     obj.test = qwargs.get("test")
 
     db_sess.add(obj)
     db_sess.commit()
     return obj
+
+
+{
+    "title": "title",
+    "description": "description",
+    "title_image": "title_image"
+}
 
 
 def get_questtours(db_sess):
@@ -96,10 +117,8 @@ def email_exists(db_sess, email: str) -> bool:
     return is_exists
 
 
-
 def main():
     db_session.global_init("db/gideTMN55.db")
-
 
 
 if __name__ == '__main__':

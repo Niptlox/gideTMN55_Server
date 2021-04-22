@@ -1,0 +1,22 @@
+[
+  // create_vidiotour
+  {
+    "title": "title",
+    "description": "description",
+    "title_image": "title_image",
+    "resource": "resource",
+    "type_vidio": "TYPE_VIDIO2D = 2; TYPE_VIDIO360 = 3"
+  },
+  // create_test
+  {
+    "title": "title",
+    "task": "task json",
+    "quest_tour_id": "quest_tour_id"
+  },
+  //create_questtour
+  {
+    "title": "title",
+    "description": "description",
+    "title_image": "title_image"
+  }
+]
